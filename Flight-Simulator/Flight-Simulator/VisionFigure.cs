@@ -73,6 +73,8 @@ namespace Flight_Simulator
             return b;
         }
 
+        
+
         private void VisionFigure_Load_1(object sender, EventArgs e)
         {
 

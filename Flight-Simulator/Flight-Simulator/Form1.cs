@@ -61,7 +61,7 @@ namespace Flight_Simulator
         bool ifStop = false;
         private void button2_Click(object sender, EventArgs e)
         {
-            
+
         }
 
 
@@ -82,7 +82,7 @@ namespace Flight_Simulator
         private float bias;
         private void timer1_Tick(object sender, EventArgs e)
         {
-           
+
             float torqueVoltageValue;
             float troque = float.Parse(pc.AnalogInput(1, out torqueVoltageValue));
             //troque = troque / 100;
@@ -119,10 +119,10 @@ namespace Flight_Simulator
                 ifDegreeForDebugUp = false;
                 ifDegreeForDebugDown = false;
             }
-           
-         
 
-            degreeForClosedLoop += (troque_trans+bias) * k * 0.01f;
+
+
+            degreeForClosedLoop += (troque_trans + bias) * k * 0.01f;
             if (degreeForClosedLoop >= 180)
             {
                 degreeForClosedLoop = 360 - degreeForClosedLoop;
@@ -150,9 +150,9 @@ namespace Flight_Simulator
             this.pictureBox1.CreateGraphics().DrawImage(dp1.drawSignalCurve(lpf1, lpf2), 0, 0);
 
             this.vf.pbCanvas.CreateGraphics().DrawImage(vf.getBlackBarWhiteBackground(degreeForClosedLoop), 0, 0);
-           
-            
-            
+
+
+
 
         }
         private List<int> expSequence;
@@ -207,7 +207,7 @@ namespace Flight_Simulator
             }
             catch
             {
-                MessageBox.Show("No Path File");
+                //MessageBox.Show("No Path File");
             }
 
             try
@@ -247,7 +247,7 @@ namespace Flight_Simulator
             }
             catch
             {
-                MessageBox.Show("No Path File");
+                // MessageBox.Show("No Path File");
             }
 
             try
@@ -287,7 +287,7 @@ namespace Flight_Simulator
             }
             catch
             {
-                MessageBox.Show("No Path File");
+                //MessageBox.Show("No Path File");
             }
 
             //--end read;
@@ -299,7 +299,7 @@ namespace Flight_Simulator
             pc.ClearALLDigitalPort();
 
             torqueData = new Dictionary<int, List<float>>();
-          
+
 
 
             expSequence = new List<int>();
@@ -319,11 +319,11 @@ namespace Flight_Simulator
             //vf.Location = new Point(3043, 439);
 
 
-             p = new Player();
-             p.Size = new System.Drawing.Size(1038, 400);
-             p.Show();
-             p.Location = new Point(10, 10);
-             p.vlcControl1.Size = new System.Drawing.Size(1022, 330);
+            p = new Player();
+            p.Size = new System.Drawing.Size(1038, 400);
+            p.Show();
+            p.Location = new Point(10, 10);
+            p.vlcControl1.Size = new System.Drawing.Size(1022, 330);
             p.Visible = false;
 
         }
@@ -387,6 +387,7 @@ namespace Flight_Simulator
 
         private void btnSetSDelete_1_Click(object sender, EventArgs e)
         {
+
             try
             {
                 int index = lbExpSequence_1.SelectedIndex;
@@ -397,9 +398,7 @@ namespace Flight_Simulator
             }
             catch
             {
-
-                MessageBox.Show("No items choosed!");
-               
+                MessageBox.Show("No item choosed!");
             }
         }
 
@@ -411,7 +410,7 @@ namespace Flight_Simulator
             }
             else
             {
-               
+
                 FileStream fs1 = new FileStream(Application.StartupPath + "\\Path_1.txt", FileMode.Create, FileAccess.Write);//创建写入文件 
                 StreamWriter sw = new StreamWriter(fs1);
 
@@ -453,9 +452,11 @@ namespace Flight_Simulator
 
         }
 
-       
+
 
         private string interVideoFile = "";
+        private double interVideoTime;
+
         private void btnAddIntervalFile_Click(object sender, EventArgs e)
         {
             OpenFileDialog ofd = new OpenFileDialog();
@@ -465,11 +466,25 @@ namespace Flight_Simulator
             if (ofd.ShowDialog() == DialogResult.OK)
             {
                 string path = ofd.FileName;
-                interVideoFile = path;
-                string fileName = path.Substring(path.LastIndexOf("\\") + 1);
-                this.lblIntervalFileName.Text = fileName;
 
-                
+                string fileName = path.Substring(path.LastIndexOf("\\") + 1);
+
+                interVideoFile = path;
+
+                p.vlcControl1.SetMedia(new FileInfo(path));
+                p.vlcControl1.Play();
+                double time = 0;
+                while (true)
+                {
+                    if (p.vlcControl1.GetCurrentMedia().Duration.TotalSeconds > 0)
+                    {
+                        time = p.vlcControl1.GetCurrentMedia().Duration.TotalSeconds;
+                        break;
+                    }
+                }
+                p.vlcControl1.Stop();
+                this.lblIntervalFileName.Text = fileName.ToString();
+                interVideoTime = time;
             }
         }
 
@@ -494,6 +509,9 @@ namespace Flight_Simulator
                     }
                 }
             }
+
+           
+                
         }
         private bool ifFromTab1ToTab2 = true;
         private void tabControl_Selected(object sender, TabControlEventArgs e)
@@ -530,7 +548,7 @@ namespace Flight_Simulator
                 timer2.Stop();
                 timer1.Stop();
                 timer3.Stop();
-                vf.Close();
+                vf.Visible = false;
 
                 p = new Player();
                 p.Size = new System.Drawing.Size(1038, 400);
@@ -541,6 +559,18 @@ namespace Flight_Simulator
                 p.vlcControl1.Size = new System.Drawing.Size(1022, 330);
 
                 k = float.Parse(tbKValue.Text);
+
+                if (cbCheckVideo.Checked)
+                {
+                    if (lblIntervalFileName.Text == "NULL")
+                    {
+                        MessageBox.Show("NO Video choosed!");
+                        tabControl.SelectTab(0);
+                    }
+                }
+
+
+
             }
         }
         private float k;
@@ -570,7 +600,7 @@ namespace Flight_Simulator
             //timer2.Stop();
             //timer3.Stop();
 
-            //vf.Visible = false ;
+            vf.Visible = false ;
 
             p = new Player();
             p.Size = new System.Drawing.Size(1038, 400);
@@ -584,8 +614,16 @@ namespace Flight_Simulator
 
             tabControl.SelectTab(2);
             k = float.Parse(tbKValue.Text);
-
-
+            if (cbCheckVideo.Checked)
+            {
+                if (lblIntervalFileName.Text == "NULL")
+                {
+                    MessageBox.Show("NO Video choosed!");
+                    tabControl.SelectTab(0);
+                }
+            }
+            
+                
         }
 
         private void btnClosedTest_Click(object sender, EventArgs e)
@@ -688,7 +726,7 @@ namespace Flight_Simulator
         private float oritation = 5;
         private void timer2_Tick(object sender, EventArgs e)
         {
-           
+
             float torqueVoltageValue;
             float troque = float.Parse(pc.AnalogInput(1, out torqueVoltageValue));
             //troque = troque / 100;
@@ -729,9 +767,9 @@ namespace Flight_Simulator
             this.pictureBox1.CreateGraphics().DrawImage(dp1.drawSignalCurve(lpf1, lpf2), 0, 0);
 
             this.vf.pbCanvas.CreateGraphics().DrawImage(vf.getBlackBarWhiteBackground(settingDegree), 0, 0);
-            
 
-          
+
+
 
         }
 
@@ -769,6 +807,7 @@ namespace Flight_Simulator
         private bool isExpModule = true;
         private bool isInterModule = false;
         private bool ifStartPlay = true;
+        private bool ifStartPlayInterval = true;
         private List<string> UsedSequencePath;
         private List<string> UsedSequenceFileName;
         private List<double> UsedSequenceTime;
@@ -787,11 +826,15 @@ namespace Flight_Simulator
             uint start = timeGetTime();
             uint newStart;
             int count = 0;
-            int i = 0, j = 0;
+
             ifStop = false;
 
-            dt = new DrawTorque(p.vlcControl1.Width, p.vlcControl1.Height, Color.DarkCyan);
-            //dp2 = new drawProcess(this.pbCommunitive.Width, this.pbCommunitive.Height, Color.DarkCyan);
+            dt = new DrawTorque(this.pbPosition.Width, this.pbPosition.Height, Color.DarkCyan);
+            dp1 = new drawProcess(this.pbPosition.Width, this.pbPosition.Height, Color.DarkCyan);
+
+
+
+            vf.SetRandomPoint();
 
 
             lpf4.Clear();
@@ -807,7 +850,7 @@ namespace Flight_Simulator
             int circle = 0;
 
 
-            int shufferCount = 0;
+
             if (cbSetSeqChoosed_1.Checked)
             {
                 UsedSequenceTime = sequenceFileTime_1;
@@ -842,18 +885,16 @@ namespace Flight_Simulator
 
             lblShowDescribe.Text = UsedSequenceFileName[expID - 1];
 
-            
+
             //start from 1 for saved file
             torqueData.Add(expID, new List<float>());
-            
+
 
 
             string lblshowDTemp = "";
             this.btnStep3Start.Enabled = false;
 
-            float settingDegree = 0;
-            oritation = -1;
-            vf.SetRandomPoint();
+
 
             //get closed loop parameters
             try
@@ -867,7 +908,7 @@ namespace Flight_Simulator
                 bias = 0;
             }
 
-
+            ifStartPlayInterval = true ;
             ifStartPlay = true;
             isExpModule = true;
             isInterModule = false;
@@ -878,7 +919,7 @@ namespace Flight_Simulator
                 Application.DoEvents();
                 newStart = timeGetTime();
 
-                if (newStart - start >= 50)
+                if (newStart - start >= 100)
                 {
 
 
@@ -911,7 +952,7 @@ namespace Flight_Simulator
 
 
 
-                       
+
                         this.lblEXPStateTRaw.Text = troque.ToString();
                         this.lblEXPSTateT.Text = troque_trans.ToString();
 
@@ -922,16 +963,16 @@ namespace Flight_Simulator
 
                         //v.pictureBox1.CreateGraphics().DrawImage(vSti.DrawV_Test(degree), 0, 0);
 
-                      
+
                         lpf4.Add(troque_trans);
                         //Console.WriteLine(degree);
                         //positionForEverySequence[sequenceIndexForExperiment].Add(settingDegree);
                         //torqueForEverySequence[sequenceIndexForExperiment].Add(troque_trans);
 
                         torqueData[expID].Add(troque_trans);
-                       
 
-                       
+
+
 
                         if (lpf4.Count == 400)
                         {
@@ -940,11 +981,11 @@ namespace Flight_Simulator
 
                         this.pbPosition.CreateGraphics().DrawImage(dt.drawSignalCurve(lpf4), 0, 0);
 
-                        if (count == (int)(UsedSequenceTime[expID-1]*20))
+                        if (count == (int)(UsedSequenceTime[expID - 1] * 10))
                         {
                             count = 0;
 
-                           
+
                             lpf4.Clear();
                             lpf3.Clear();
 
@@ -953,9 +994,9 @@ namespace Flight_Simulator
                             if (expIndex < UsedSequenceTime.Count)
                             {
                                 expID = expOrder[expIndex];
-                                lblshowDTemp = sequenceFileName_1[expID-1];
+                                lblshowDTemp = sequenceFileName_1[expID - 1];
                                 torqueData.Add(expID, new List<float>());
-                                
+
                             }
                             else
                             {
@@ -963,6 +1004,7 @@ namespace Flight_Simulator
                             }
                             isExpModule = false;
                             isInterModule = true;
+                            ifStartPlayInterval = true;
                             lblShowDescribe.Text = "InterFigure";
 
 
@@ -975,122 +1017,49 @@ namespace Flight_Simulator
                         //imageNow = dp2.drawCommunitivePoint(degree, false,sequenceIndexForExperiment);
                         //this.pbCommunitive.CreateGraphics().DrawImage(imageNow, 0, 0);
 
-                    
-
-                    }
-                    if (isInterModule & cbPureBackground.Checked)
-                    {
-                        count = 0;
-
-                        lpf3.Clear();
-                        lpf4.Clear();
-
-                        if (expIndex == UsedSequenceFileName.Count)
-                        {
-
-
-                            //DataSave(expOrder, TotalCircle);
-
-                            circle++;
-                            if (circle == TotalCircle)
-                            {
-                                ifStop = true;
-                                this.btnStep3Start.Enabled = true;
-                                pc.ClearALLDigitalPort();
-                                //OpenLoop();
-
-
-                            }
-                            else
-                            {
-
-
-                                torqueData.Clear();
-                                expOrder = getShufferArr(UsedSequenceFileName.Count);
-                                expIndex = 0;
-                                strSequenc = "";
-                                for (int jj = 0; jj != expOrder.Length; jj++)
-                                {
-                                    strSequenc += expOrder[jj].ToString();
-
-                                }
-                                lbShowRandomValue.Items.Add(strSequenc);
-
-                                expID = expOrder[expIndex];
-                                lblShowDescribe.Text = UsedSequenceFileName[expID - 1];
-
-                                torqueData.Add(expID, new List<float>());
-
-
-                            }
-                        }
-                        else
-                        {
-                            this.lblShowDescribe.Text = lblshowDTemp;
-                        }
-                        isExpModule = true;
-                        isInterModule = false;
-                        ifStartPlay = true;
-
 
 
                     }
-
-
-                }
-
-
-                if (isInterModule & cbCheckCloseLoop.Checked)
+                    if (isInterModule & cbCheckVideo.Checked)
                     {
 
-
-                        degree += (troque_trans+bias) * k * 0.02f;
-
-                        lpf3.Add(degree);
+                        if (ifStartPlayInterval)
+                        {
+                            this.p.vlcControl1.SetMedia(new FileInfo(interVideoFile));
+                            this.p.vlcControl1.Play();
+                            ifStartPlayInterval = false;
+                        }
                         lpf4.Add(troque_trans);
 
-                        if (lpf3.Count == 400)
-                        {
-                            lpf3.Remove(lpf3[0]);
-                        }
-
+                       
                         if (lpf4.Count == 400)
                         {
                             lpf4.Remove(lpf4[0]);
                         }
 
 
-                        
+
                         this.lblEXPStateTRaw.Text = troque.ToString();
                         this.lblEXPSTateT.Text = troque_trans.ToString();
 
-                        if (degree > 180)
-                        {
-                            degree = degree - 180;
-                        }
-                        if (degree < -180)
-                        {
-                            degree = degree + 180;
-                        }
-                        //debug mode
-                        //degree += 1;
+                       
 
-                        this.pbPosition.CreateGraphics().DrawImage(dp1.drawSignalCurve(lpf3, lpf4), 0, 0);
+                        this.pbPosition.CreateGraphics().DrawImage(dt.drawSignalCurve(lpf4), 0, 0);
 
-                        
 
-                        if (count == IntervalDuration * 20)
+
+                        if (count == (int)(interVideoTime * 10))
                         {
                             count = 0;
 
-                            lpf3.Clear();
+                            
                             lpf4.Clear();
-                           
+                          
                             if (expIndex == UsedSequenceFileName.Count)
                             {
 
 
-                                //DataSave(expOrder, TotalCircle);
+                                DataSave(expOrder, circle);
 
                                 circle++;
                                 if (circle == TotalCircle)
@@ -1105,7 +1074,7 @@ namespace Flight_Simulator
                                 else
                                 {
 
-                                    
+
                                     torqueData.Clear();
                                     expOrder = getShufferArr(UsedSequenceFileName.Count);
                                     expIndex = 0;
@@ -1118,10 +1087,10 @@ namespace Flight_Simulator
                                     lbShowRandomValue.Items.Add(strSequenc);
 
                                     expID = expOrder[expIndex];
-                                    lblShowDescribe.Text = UsedSequenceFileName[expID-1];
+                                    lblShowDescribe.Text = UsedSequenceFileName[expID - 1];
 
                                     torqueData.Add(expID, new List<float>());
-                                    
+
 
                                 }
                             }
@@ -1140,10 +1109,120 @@ namespace Flight_Simulator
 
 
 
-                        
+
                         this.vf.pbCanvas.CreateGraphics().DrawImage(vf.getBlackBarWhiteBackground(degree), 0, 0);
-                        
-                        
+
+
+                    }
+
+
+                    if (isInterModule & cbCheckCloseLoop.Checked)
+                    {
+
+
+                        p.Visible = false;
+                        vf.Visible = true;
+                        degree += (troque_trans + bias) * k * 0.02f;
+
+                        lpf3.Add(degree);
+                        lpf4.Add(troque_trans);
+
+                        if (lpf3.Count == 400)
+                        {
+                            lpf3.Remove(lpf3[0]);
+                        }
+
+                        if (lpf4.Count == 400)
+                        {
+                            lpf4.Remove(lpf4[0]);
+                        }
+
+
+
+                        this.lblEXPStateTRaw.Text = troque.ToString();
+                        this.lblEXPSTateT.Text = troque_trans.ToString();
+
+                        if (degree > 180)
+                        {
+                            degree = degree - 180;
+                        }
+                        if (degree < -180)
+                        {
+                            degree = degree + 180;
+                        }
+                        //debug mode
+                        //degree += 1;
+
+                        this.pbPosition.CreateGraphics().DrawImage(dp1.drawSignalCurve(lpf3, lpf4), 0, 0);
+
+
+
+                        if (count == IntervalDuration * 20)
+                        {
+                            count = 0;
+
+                            lpf3.Clear();
+                            lpf4.Clear();
+                            p.Visible = true;
+                            vf.Visible = false;
+                            if (expIndex == UsedSequenceFileName.Count)
+                            {
+
+
+                                DataSave(expOrder, circle);
+
+                                circle++;
+                                if (circle == TotalCircle)
+                                {
+                                    ifStop = true;
+                                    this.btnStep3Start.Enabled = true;
+                                    pc.ClearALLDigitalPort();
+                                    //OpenLoop();
+
+
+                                }
+                                else
+                                {
+
+
+                                    torqueData.Clear();
+                                    expOrder = getShufferArr(UsedSequenceFileName.Count);
+                                    expIndex = 0;
+                                    strSequenc = "";
+                                    for (int jj = 0; jj != expOrder.Length; jj++)
+                                    {
+                                        strSequenc += expOrder[jj].ToString();
+
+                                    }
+                                    lbShowRandomValue.Items.Add(strSequenc);
+
+                                    expID = expOrder[expIndex];
+                                    lblShowDescribe.Text = UsedSequenceFileName[expID - 1];
+
+                                    torqueData.Add(expID, new List<float>());
+
+
+                                }
+                            }
+                            else
+                            {
+                                this.lblShowDescribe.Text = lblshowDTemp;
+                            }
+                            isExpModule = true;
+                            isInterModule = false;
+                            ifStartPlay = true;
+
+
+
+                        }
+
+
+
+
+
+                        this.vf.pbCanvas.CreateGraphics().DrawImage(vf.getBlackBarWhiteBackground(degree), 0, 0);
+
+
                     }
 
 
@@ -1152,21 +1231,56 @@ namespace Flight_Simulator
 
 
 
-            
+
+
+
+            }
+        }
+
+
+        private void DataSave(int[] expOrder, int circleNumber)
+        {
+            string ExpFinishTime = DateTime.Now.ToString();
+
+            string ExpName = tbExperimentName.Text;
+
+            //positionForEverySequence
+            //torqueForEverySequence
+
+            string path = this.lblDPValue.Text.ToString() + "\\" + ExpName + "_" + (circleNumber + 1).ToString() + ".txt";
+
+            SigleExpResultPre serp = new SigleExpResultPre(ExpFinishTime, ExpName, path, torqueData, expOrder);
+
+            serp.showResult();
+            serp.Show();
 
 
         }
+
+
+
+
 
         private void btnEXPStop_Click(object sender, EventArgs e)
         {
             btnStep3Start.Enabled = true;
             ifStop = true;
+            p.vlcControl1.Stop();
+            p.Visible = true;
+            vf.Visible = false;
         }
 
         private void lbExpSequence_1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            int selectIndex = lbExpSequence_1.SelectedIndex;
-            this.lblShowVideoTime_1.Text = sequenceFileTime_1[selectIndex].ToString();
+            try
+            {
+                int selectIndex = lbExpSequence_1.SelectedIndex;
+                this.lblShowVideoTime_1.Text = sequenceFileTime_1[selectIndex].ToString();
+            }
+            catch
+            {
+                ;
+            }
         }
 
         private void btnSetSAdd_2_Click(object sender, EventArgs e)
@@ -1248,10 +1362,9 @@ namespace Flight_Simulator
             }
             catch
             {
-
-                MessageBox.Show("No items choosed!");
-
+                MessageBox.Show("No item choosed!");
             }
+
         }
 
         private void btnSetSDelete_3_Click(object sender, EventArgs e)
@@ -1267,7 +1380,7 @@ namespace Flight_Simulator
             catch
             {
 
-                MessageBox.Show("No items choosed!");
+                MessageBox.Show("No item choosed!");
 
             }
         }
@@ -1372,14 +1485,28 @@ namespace Flight_Simulator
 
         private void lbExpSequence_2_SelectedIndexChanged(object sender, EventArgs e)
         {
-            int selectIndex = lbExpSequence_2.SelectedIndex;
-            this.lblShowVideoTime_2.Text = sequenceFileTime_2[selectIndex].ToString();
+            try
+            {
+                int selectIndex = lbExpSequence_2.SelectedIndex;
+                this.lblShowVideoTime_2.Text = sequenceFileTime_2[selectIndex].ToString();
+            }
+            catch
+            {
+                ;
+            }
         }
 
         private void lbExpSequence_3_SelectedIndexChanged(object sender, EventArgs e)
         {
-            int selectIndex = lbExpSequence_3.SelectedIndex;
-            this.lblShowVideoTime_3.Text = sequenceFileTime_3[selectIndex].ToString();
+            try
+            {
+                int selectIndex = lbExpSequence_3.SelectedIndex;
+                this.lblShowVideoTime_3.Text = sequenceFileTime_3[selectIndex].ToString();
+            }
+            catch
+            {
+                ;
+            }
         }
 
         private void cbSetSeqChoosed_1_Click(object sender, EventArgs e)
@@ -1433,40 +1560,30 @@ namespace Flight_Simulator
         }
 
         private Color staticColor;
-        private void btnChooseColor_Click(object sender, EventArgs e)
-        {
-            if (colorDialog1.ShowDialog() == DialogResult.OK)
-            {
-                this.pbColorShow.BackColor = colorDialog1.Color;
-
-                staticColor = colorDialog1.Color;
-
-                this.pbColorShow.Invalidate();
-
-            }
-        }
+       
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
 
         }
 
-        private void cbPureBackground_Click(object sender, EventArgs e)
-        {
-            cbCheckCloseLoop.Checked = false;
-            cbCheckVideo.Checked = false;
-        }
+       
 
         private void cbCheckVideo_Click(object sender, EventArgs e)
         {
-            cbPureBackground.Checked = false;
+            
             cbCheckCloseLoop.Checked = false;
         }
 
         private void cbCheckCloseLoop_Click(object sender, EventArgs e)
         {
-            cbPureBackground.Checked = false;
+           
             cbCheckVideo.Checked = false;
+        }
+
+        private void Form1_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            ifStop = false;
         }
     }
 }
