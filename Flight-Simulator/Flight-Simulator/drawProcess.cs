@@ -372,7 +372,7 @@ namespace rorationSimulation
             int y = 90;
             // draw background
             Rectangle rect = new Rectangle(0,0, width, height);
-            g1.FillRectangle(new SolidBrush(Color.DarkCyan), rect);
+            g1.FillRectangle(new SolidBrush(Color.MistyRose), rect);
 
 
             //draw axis
@@ -425,7 +425,7 @@ namespace rorationSimulation
             }
 
             //draw title
-            g1.DrawString("Position", new Font("Arial", 14), new SolidBrush(Color.Yellow), widthCenter-100, 10);            
+            g1.DrawString("Position", new Font("Arial", 14), new SolidBrush(Color.Blue), widthCenter-100, 10);            
             g1.DrawString(" Torque", new Font("Arial", 14), new SolidBrush(Color.Red), widthCenter - 20, 10);
             //g1.FillRectangle(new SolidBrush(Color.Yellow), widthCenter - 100, 10, 15, 10);
 
@@ -440,7 +440,7 @@ namespace rorationSimulation
 
                     if (Math.Abs(lpf1[i] - lpf1[i + 1]) < 1000)
                     {
-                        g1.DrawLine(Pens.Yellow, 65 + i, (height-110)/2f-(height-110)/360f*lpf1[i] + 60, 65 + i + 1, (height - 110) / 2f - (height - 110) / 360f * lpf1[i+1] + 60);
+                        g1.DrawLine(Pens.Blue, 65 + i, (height-110)/2f-(height-110)/360f*lpf1[i] + 60, 65 + i + 1, (height - 110) / 2f - (height - 110) / 360f * lpf1[i+1] + 60);
                         
                     }
                     

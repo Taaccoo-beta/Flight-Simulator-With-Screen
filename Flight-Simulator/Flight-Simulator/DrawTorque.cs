@@ -69,7 +69,7 @@ namespace Flight_Simulator
             int y = 90;
             // draw background
             Rectangle rect = new Rectangle(0, 0, width, height);
-            g1.FillRectangle(new SolidBrush(Color.DarkCyan), rect);
+            g1.FillRectangle(new SolidBrush(Color.MistyRose), rect);
 
 
             //draw axis

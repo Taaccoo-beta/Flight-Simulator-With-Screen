@@ -52,7 +52,6 @@ H:\github\flight-simulator-with-screen\Flight-Simulator\Flight-Simulator\bin\Deb
 H:\github\flight-simulator-with-screen\Flight-Simulator\Flight-Simulator\bin\Debug\Tao.FreeGlut.xml
 H:\github\flight-simulator-with-screen\Flight-Simulator\Flight-Simulator\bin\Debug\Tao.OpenGl.xml
 H:\github\flight-simulator-with-screen\Flight-Simulator\Flight-Simulator\bin\Debug\Tao.Platform.Windows.xml
-H:\github\flight-simulator-with-screen\Flight-Simulator\Flight-Simulator\obj\Debug\Flight-Simulator.csprojResolveAssemblyReference.cache
 H:\github\flight-simulator-with-screen\Flight-Simulator\Flight-Simulator\obj\Debug\Flight_Simulator.Form1.resources
 H:\github\flight-simulator-with-screen\Flight-Simulator\Flight-Simulator\obj\Debug\Flight_Simulator.Player.resources
 H:\github\flight-simulator-with-screen\Flight-Simulator\Flight-Simulator\obj\Debug\Flight_Simulator.Properties.Resources.resources
@@ -75,3 +74,4 @@ E:\github\flight-simulator-with-screen\Flight-Simulator\Flight-Simulator\obj\Deb
 E:\github\flight-simulator-with-screen\Flight-Simulator\Flight-Simulator\obj\Debug\Flight-Simulator.csproj.GenerateResource.Cache
 E:\github\flight-simulator-with-screen\Flight-Simulator\Flight-Simulator\obj\Debug\Flight-Simulator.exe
 E:\github\flight-simulator-with-screen\Flight-Simulator\Flight-Simulator\obj\Debug\Flight-Simulator.pdb
+H:\github\flight-simulator-with-screen\Flight-Simulator\Flight-Simulator\obj\Debug\Flight_Simulator.SigleExpResultPre.resources
