@@ -86,7 +86,7 @@ namespace Flight_Simulator
             float torqueVoltageValue;
             float troque = float.Parse(pc.AnalogInput(1, out torqueVoltageValue));
             //troque = troque / 100;
-            troque_trans = (troque - 2048) / 2048 * 80;
+            troque_trans = (troque - 2048) / 2048 *50;
 
 
             this.lblPositionValue.Text = degreeForClosedLoop.ToString();
@@ -698,9 +698,10 @@ namespace Flight_Simulator
         private void timer3_Tick(object sender, EventArgs e)
         {
             float torqueVoltageValue;
-            float troque = float.Parse(pc.AnalogInput(1, out torqueVoltageValue));
+            //float troque = float.Parse(pc.AnalogInput(1, out torqueVoltageValue));
             //troque = troque / 100;
-            troque_trans = (troque - 2048) / 2048 * 80;
+            float troque =2048;
+            troque_trans = (troque - 2048) / 2048 * 50;
 
             degree = 0;
             this.lblPositionValue.Text = settingDegree.ToString();
@@ -738,7 +739,7 @@ namespace Flight_Simulator
             float torqueVoltageValue;
             float troque = float.Parse(pc.AnalogInput(1, out torqueVoltageValue));
             //troque = troque / 100;
-            troque_trans = (troque - 2048) / 2048 * 80;
+            troque_trans = (troque - 2048) / 2048 * 50;
 
 
             this.lblPositionValue.Text = settingDegree.ToString();
@@ -934,7 +935,7 @@ namespace Flight_Simulator
                     float torqueVoltageValue;
                     troque = float.Parse(pc.AnalogInput(1, out torqueVoltageValue));
                     //troque = troque / 100;
-                    troque_trans = (troque - 2048) / 2048 * 80;
+                    troque_trans = (troque - 2048) / 2048 * 50;
 
 
                     //debug mode
