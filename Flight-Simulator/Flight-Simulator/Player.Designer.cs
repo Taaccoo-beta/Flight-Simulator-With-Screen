@@ -38,6 +38,7 @@
             this.vlcControl1.BackColor = System.Drawing.Color.Black;
             this.vlcControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.vlcControl1.Location = new System.Drawing.Point(0, 0);
+            this.vlcControl1.Margin = new System.Windows.Forms.Padding(0);
             this.vlcControl1.Name = "vlcControl1";
             this.vlcControl1.Size = new System.Drawing.Size(1003, 394);
             this.vlcControl1.Spu = -1;

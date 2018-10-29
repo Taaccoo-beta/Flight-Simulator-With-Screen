@@ -507,6 +507,8 @@ namespace Flight_Simulator
                     {
                         ifFromTab1ToTab2 = false;
                         tabControl.SelectTab(1);
+                        this.vf.Visible = true;
+                        this.p.Visible = false;
                     }
                 }
             }
@@ -534,6 +536,9 @@ namespace Flight_Simulator
                         else
                         {
                             tabControl.SelectTab(1);
+                            this.vf.Visible = true;
+                            p.Visible = false;
+
                         }
                     }
                 }
@@ -556,7 +561,8 @@ namespace Flight_Simulator
                 p.Show();
 
                 //vf.Location = new Point(3043, 439);
-                p.Location = new Point(10, 10);
+                //p.Location = new Point(10, 10);
+                p.Location = new Point(3043, 439);
                 p.vlcControl1.Size = new System.Drawing.Size(1022, 330);
 
                 k = float.Parse(tbKValue.Text);
@@ -608,7 +614,8 @@ namespace Flight_Simulator
             p.Show();
 
             //vf.Location = new Point(3043, 439);
-            p.Location = new Point(10, 10);
+            //p.Location = new Point(10, 10);
+            p.Location = new Point(3043, 439);
             p.vlcControl1.Size = new System.Drawing.Size(1022, 330);
 
 
@@ -846,7 +853,7 @@ namespace Flight_Simulator
             sequenceIndexForExperiment = 0;
 
             //
-            int IntervalDuration = int.Parse(tbDuration.Text);
+            double IntervalDuration = double.Parse(tbDuration.Text);
             int TotalCircle = int.Parse(this.tbCircle.Text);
             int circle = 0;
 
@@ -1158,7 +1165,7 @@ namespace Flight_Simulator
 
 
 
-                        if (count == IntervalDuration * 20)
+                        if (count == (int)(IntervalDuration * 20))
                         {
                             count = 0;
 
