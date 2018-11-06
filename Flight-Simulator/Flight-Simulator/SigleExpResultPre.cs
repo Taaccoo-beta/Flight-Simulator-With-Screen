@@ -19,15 +19,17 @@ namespace Flight_Simulator
      
         private string path;
         private Dictionary<int, List<float>> troqueData;
+        private Dictionary<int, List<float>> intervalTroqueData;
         private int[] expOrder;
 
-        public SigleExpResultPre(string dateTime, string expName, string path, Dictionary<int, List<float>> troqueData, int[] expOrder)
+        public SigleExpResultPre(string dateTime, string expName, string path, Dictionary<int, List<float>> troqueData,Dictionary<int,List<float>> intervalTroqueData, int[] expOrder)
         {
             this.dateTime = dateTime;
             this.expName = expName;
-          
+            
            
             this.troqueData = troqueData;
+            this.intervalTroqueData = intervalTroqueData;
             this.path = path;
             this.expOrder = expOrder;
             InitializeComponent();
@@ -80,6 +82,14 @@ namespace Flight_Simulator
                     sW.WriteLine(troqueData[i][j].ToString("00.00"));
                 }
 
+                sW.Write("Interval" + i);
+                sW.WriteLine();
+                indexInside = intervalTroqueData[i].Count;
+
+                for (int j = 0; j != indexInside; j++)
+                {
+                    sW.WriteLine(intervalTroqueData[i][j].ToString("00.00"));
+                }
             }
 
             sW.Close();

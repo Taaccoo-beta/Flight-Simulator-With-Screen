@@ -299,7 +299,7 @@ namespace Flight_Simulator
             pc.ClearALLDigitalPort();
 
             torqueData = new Dictionary<int, List<float>>();
-
+            intervalTorqueData = new Dictionary<int, List<float>>();
 
 
             expSequence = new List<int>();
@@ -818,6 +818,7 @@ namespace Flight_Simulator
 
 
         private Dictionary<int, List<float>> torqueData;
+        private Dictionary<int, List<float>> intervalTorqueData;
         private int sequenceIndexForExperiment = 0;
         private DrawTorque dt;
         private bool isExpModule = true;
@@ -855,11 +856,11 @@ namespace Flight_Simulator
 
             lpf4.Clear();
             torqueData.Clear();
-
+            intervalTorqueData.Clear();
 
             expSequence.Clear();
             sequenceIndexForExperiment = 0;
-
+            
             //
             double IntervalDuration = double.Parse(tbDuration.Text);
             int TotalCircle = int.Parse(this.tbCircle.Text);
@@ -898,13 +899,13 @@ namespace Flight_Simulator
             lbShowRandomValue.Items.Add(strSequenc);
             strSequenc = "";
             int expID = expOrder[expIndex];
-
+            int tempExpId = expID;
             lblShowDescribe.Text = UsedSequenceFileName[expID - 1];
 
 
             //start from 1 for saved file
             torqueData.Add(expID, new List<float>());
-
+            
 
 
             string lblshowDTemp = "";
@@ -1007,17 +1008,24 @@ namespace Flight_Simulator
 
 
                             expIndex++;
+                            
                             if (expIndex < UsedSequenceTime.Count)
                             {
+                               
+                                tempExpId = expID;
+                                
                                 expID = expOrder[expIndex];
                                 lblshowDTemp = sequenceFileName_1[expID - 1];
                                 torqueData.Add(expID, new List<float>());
+                                
 
                             }
                             else
                             {
                                 ;
                             }
+
+                            intervalTorqueData.Add(tempExpId, new List<float>());
                             isExpModule = false;
                             isInterModule = true;
                             ifStartPlayInterval = true;
@@ -1052,13 +1060,13 @@ namespace Flight_Simulator
                         {
                             lpf4.Remove(lpf4[0]);
                         }
-
+                        intervalTorqueData[tempExpId].Add(troque_trans);
 
 
                         this.lblEXPStateTRaw.Text = troque.ToString();
                         this.lblEXPSTateT.Text = troque_trans.ToString();
 
-                       
+                        
 
                         this.pbPosition.CreateGraphics().DrawImage(dt.drawSignalCurve(lpf4), 0, 0);
 
@@ -1092,6 +1100,7 @@ namespace Flight_Simulator
 
 
                                     torqueData.Clear();
+                                    intervalTorqueData.Clear();
                                     expOrder = getShufferArr(UsedSequenceFileName.Count);
                                     expIndex = 0;
                                     strSequenc = "";
@@ -1103,10 +1112,11 @@ namespace Flight_Simulator
                                     lbShowRandomValue.Items.Add(strSequenc);
 
                                     expID = expOrder[expIndex];
+                                    
                                     lblShowDescribe.Text = UsedSequenceFileName[expID - 1];
 
                                     torqueData.Add(expID, new List<float>());
-
+                                    
 
                                 }
                             }
@@ -1117,25 +1127,19 @@ namespace Flight_Simulator
                             isExpModule = true;
                             isInterModule = false;
                             ifStartPlay = true;
-
+                            tempExpId = expID;
 
 
                         }
-
-
-
-
-
+                        
                         this.vf.pbCanvas.CreateGraphics().DrawImage(vf.getBlackBarWhiteBackground(degree), 0, 0);
-
 
                     }
 
 
                     if (isInterModule & cbCheckCloseLoop.Checked)
                     {
-
-
+                        
                         p.Visible = false;
                         vf.Visible = true;
                         degree += (troque_trans + bias) * k * 0.02f;
@@ -1152,9 +1156,8 @@ namespace Flight_Simulator
                         {
                             lpf4.Remove(lpf4[0]);
                         }
-
-
-
+                       
+                        intervalTorqueData[tempExpId].Add(troque_trans);
                         this.lblEXPStateTRaw.Text = troque.ToString();
                         this.lblEXPSTateT.Text = troque_trans.ToString();
 
@@ -1170,10 +1173,8 @@ namespace Flight_Simulator
                         //degree += 1;
 
                         this.pbPosition.CreateGraphics().DrawImage(dp1.drawSignalCurve(lpf3, lpf4), 0, 0);
-
-
-
-                        if (count == (int)(IntervalDuration * 20))
+                        
+                        if (count == (int)(IntervalDuration * 10))
                         {
                             count = 0;
 
@@ -1194,14 +1195,13 @@ namespace Flight_Simulator
                                     this.btnStep3Start.Enabled = true;
                                     pc.ClearALLDigitalPort();
                                     //OpenLoop();
-
-
+                                    
                                 }
                                 else
                                 {
-
-
+                                    
                                     torqueData.Clear();
+                                    intervalTorqueData.Clear();
                                     expOrder = getShufferArr(UsedSequenceFileName.Count);
                                     expIndex = 0;
                                     strSequenc = "";
@@ -1213,10 +1213,11 @@ namespace Flight_Simulator
                                     lbShowRandomValue.Items.Add(strSequenc);
 
                                     expID = expOrder[expIndex];
+                                  
                                     lblShowDescribe.Text = UsedSequenceFileName[expID - 1];
 
                                     torqueData.Add(expID, new List<float>());
-
+                                    
 
                                 }
                             }
@@ -1227,29 +1228,16 @@ namespace Flight_Simulator
                             isExpModule = true;
                             isInterModule = false;
                             ifStartPlay = true;
-
-
+                            tempExpId = expID;
 
                         }
-
-
-
-
-
+                        
                         this.vf.pbCanvas.CreateGraphics().DrawImage(vf.getBlackBarWhiteBackground(degree), 0, 0);
-
-
+                        
                     }
-
-
+                    
                 }
-
-
-
-
-
-
-
+                
             }
         }
 
@@ -1265,8 +1253,8 @@ namespace Flight_Simulator
 
             string path = this.lblDPValue.Text.ToString() + "\\" + ExpName + "_" + (circleNumber + 1).ToString() + ".txt";
 
-            SigleExpResultPre serp = new SigleExpResultPre(ExpFinishTime, ExpName, path, torqueData, expOrder);
-
+            SigleExpResultPre serp = new SigleExpResultPre(ExpFinishTime, ExpName, path, torqueData,intervalTorqueData, expOrder);
+            MessageBox.Show(intervalTorqueData.Count.ToString());
             serp.showResult();
             serp.Show();
 
