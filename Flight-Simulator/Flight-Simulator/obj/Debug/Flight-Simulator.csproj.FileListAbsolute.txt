@@ -75,3 +75,4 @@ E:\github\flight-simulator-with-screen\Flight-Simulator\Flight-Simulator\obj\Deb
 E:\github\flight-simulator-with-screen\Flight-Simulator\Flight-Simulator\obj\Debug\Flight-Simulator.exe
 E:\github\flight-simulator-with-screen\Flight-Simulator\Flight-Simulator\obj\Debug\Flight-Simulator.pdb
 H:\github\flight-simulator-with-screen\Flight-Simulator\Flight-Simulator\obj\Debug\Flight_Simulator.SigleExpResultPre.resources
+H:\github\flight-simulator-with-screen\Flight-Simulator\Flight-Simulator\obj\Debug\Flight-Simulator.csprojResolveAssemblyReference.cache

@@ -705,9 +705,9 @@ namespace Flight_Simulator
         private void timer3_Tick(object sender, EventArgs e)
         {
             float torqueVoltageValue;
-            //float troque = float.Parse(pc.AnalogInput(1, out torqueVoltageValue));
+            float troque = float.Parse(pc.AnalogInput(1, out torqueVoltageValue));
             //troque = troque / 100;
-            float troque =2048;
+           
             troque_trans = (troque - 2048) / 2048 * 50;
 
             degree = 0;
