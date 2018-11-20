@@ -109,6 +109,7 @@
     <Compile Include="VisionFigure.Designer.cs">
       <DependentUpon>VisionFigure.cs</DependentUpon>
     </Compile>
+    <Compile Include="VisualStimulus.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>

@@ -7,3 +7,12 @@ F:\VSProject\WindowsFormsApp12\WindowsFormsApp12\obj\Debug\WindowsFormsApp12.Pro
 F:\VSProject\WindowsFormsApp12\WindowsFormsApp12\obj\Debug\WindowsFormsApp12.csproj.GenerateResource.Cache
 F:\VSProject\WindowsFormsApp12\WindowsFormsApp12\obj\Debug\WindowsFormsApp12.exe
 F:\VSProject\WindowsFormsApp12\WindowsFormsApp12\obj\Debug\WindowsFormsApp12.pdb
+H:\github\flight-simulator-with-screen\SolvedflickerForGDI\WindowsFormsApp12\bin\Debug\WindowsFormsApp12.exe.config
+H:\github\flight-simulator-with-screen\SolvedflickerForGDI\WindowsFormsApp12\bin\Debug\WindowsFormsApp12.exe
+H:\github\flight-simulator-with-screen\SolvedflickerForGDI\WindowsFormsApp12\bin\Debug\WindowsFormsApp12.pdb
+H:\github\flight-simulator-with-screen\SolvedflickerForGDI\WindowsFormsApp12\obj\Debug\WindowsFormsApp12.csprojResolveAssemblyReference.cache
+H:\github\flight-simulator-with-screen\SolvedflickerForGDI\WindowsFormsApp12\obj\Debug\WindowsFormsApp12.Form1.resources
+H:\github\flight-simulator-with-screen\SolvedflickerForGDI\WindowsFormsApp12\obj\Debug\WindowsFormsApp12.Properties.Resources.resources
+H:\github\flight-simulator-with-screen\SolvedflickerForGDI\WindowsFormsApp12\obj\Debug\WindowsFormsApp12.csproj.GenerateResource.Cache
+H:\github\flight-simulator-with-screen\SolvedflickerForGDI\WindowsFormsApp12\obj\Debug\WindowsFormsApp12.exe
+H:\github\flight-simulator-with-screen\SolvedflickerForGDI\WindowsFormsApp12\obj\Debug\WindowsFormsApp12.pdb

@@ -8,6 +8,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using visual_stimulus_generator;
+
 
 namespace WindowsFormsApp12
 {
@@ -24,27 +26,68 @@ namespace WindowsFormsApp12
         }
         Graphics g, g2;
         Bitmap bm;
-
+        byte[,] img = new byte[10,20];
+        private RandomPointGenerator rg;
         private void button1_Click(object sender, EventArgs e)
         {
+            rg = new RandomPointGenerator(Width, Height, 1, 10);
+
+            
+
+            rg.setRandomPoint(50);
+
             timer1.Interval = 50;
             timer1.Start();
             
         }
         private int x = 0;
+        private System.Diagnostics.Stopwatch sw;
         private void timer1_Tick(object sender, EventArgs e)
         {
+            
+
+            sw = new System.Diagnostics.Stopwatch();
+            sw.Start();
+            //g2.Clear(Color.White);
+            //for (int i = 0; i != Width; i++)
+            //{
+            //    for (int j = 0; j != Height; j++)
+            //    {
+            //        if (rg.randomCanvasBackground[i][j] == 0)
+            //        {
+            //            bm.SetPixel(i, j, Color.Black);
+
+            //        }
+
+            //    }
+            //}
+            //rg.MoveRightForSimpleCanvas(20);
+
             x += 10;
             if (x > Width)
             {
                 x = 0;
             }
             g2.Clear(Color.White);
-            g2.FillRectangle(new SolidBrush(Color.Black), x, 0, 20, this.Height);
-            this.Refresh();
-            
-        }
+            g2.FillRectangle(new SolidBrush(Color.Black), x % Width, 0, Width / 2, this.Height);
 
+
+            sw.Stop();
+            TimeSpan ts = sw.Elapsed;
+            this.label1.Text = ts.Milliseconds.ToString();
+
+            this.Refresh();
+           
+
+        }
+        //sw = new System.Diagnostics.Stopwatch();
+        //            sw.Start();
+
+
+
+        //sw.Stop();
+        //                TimeSpan ts = sw.Elapsed;
+        //                this.lblShowFrameTime.Text = ts.Milliseconds.ToString();
         private void Form1_Paint(object sender, PaintEventArgs e)
         {
             
