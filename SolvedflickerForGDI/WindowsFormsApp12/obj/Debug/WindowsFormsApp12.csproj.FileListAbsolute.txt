@@ -1,0 +1,9 @@
+F:\VSProject\WindowsFormsApp12\WindowsFormsApp12\bin\Debug\WindowsFormsApp12.exe.config
+F:\VSProject\WindowsFormsApp12\WindowsFormsApp12\bin\Debug\WindowsFormsApp12.exe
+F:\VSProject\WindowsFormsApp12\WindowsFormsApp12\bin\Debug\WindowsFormsApp12.pdb
+F:\VSProject\WindowsFormsApp12\WindowsFormsApp12\obj\Debug\WindowsFormsApp12.csprojResolveAssemblyReference.cache
+F:\VSProject\WindowsFormsApp12\WindowsFormsApp12\obj\Debug\WindowsFormsApp12.Form1.resources
+F:\VSProject\WindowsFormsApp12\WindowsFormsApp12\obj\Debug\WindowsFormsApp12.Properties.Resources.resources
+F:\VSProject\WindowsFormsApp12\WindowsFormsApp12\obj\Debug\WindowsFormsApp12.csproj.GenerateResource.Cache
+F:\VSProject\WindowsFormsApp12\WindowsFormsApp12\obj\Debug\WindowsFormsApp12.exe
+F:\VSProject\WindowsFormsApp12\WindowsFormsApp12\obj\Debug\WindowsFormsApp12.pdb
