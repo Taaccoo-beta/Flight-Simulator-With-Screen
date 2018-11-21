@@ -22,8 +22,8 @@ namespace FlightSimulator
             this.UpdateStyles();
 
         }
-        Graphics g, g2;
-        Bitmap bm;
+        public Graphics g, g2;
+        public Bitmap bm;
 
         int degree = -45;
         int Ori = 1;

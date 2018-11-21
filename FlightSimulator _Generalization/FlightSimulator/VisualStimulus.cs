@@ -22,7 +22,7 @@ namespace FlightSimulator
 
         }
 
-        public Bitmap
+       
 
     }
 }

@@ -28,12 +28,14 @@ namespace WindowsFormsApp12
         Bitmap bm;
         byte[,] img = new byte[10,20];
         private RandomPointGenerator rg;
+        private Generator gg;
         private void button1_Click(object sender, EventArgs e)
         {
-            rg = new RandomPointGenerator(Width, Height, 1, 10);
+            rg = new RandomPointGenerator(1024, 330, 1, 10);
 
-            
-
+            gg = new Generator(1024, 330);
+            gg.SetSimpleCanvas();
+            gg.setBigAndSmallStimulus();
             rg.setRandomPoint(50);
 
             timer1.Interval = 50;
@@ -63,15 +65,26 @@ namespace WindowsFormsApp12
             //}
             //rg.MoveRightForSimpleCanvas(20);
 
-            x += 10;
-            if (x > Width)
-            {
-                x = 0;
-            }
+            //x += 10;
+            //if (x > Width)
+            //{
+            //    x = 0;
+            //}
+            //g2.Clear(Color.White);
+            //g2.FillRectangle(new SolidBrush(Color.Black), x % Width, 0, Width / 2, this.Height);
             g2.Clear(Color.White);
-            g2.FillRectangle(new SolidBrush(Color.Black), x % Width, 0, Width / 2, this.Height);
-
-
+            for (int i = 0; i != 1024; i++)
+            {
+                if (gg.simpleCanvas[i] == 1)
+                {
+                    g2.DrawLine(Pens.Black, i, 105, i, 225);
+                }
+            }
+            //gg.MoveRightForSimpleCanvas(10);
+            g2.DrawLine(Pens.Yellow, 256, 0, 256, 330);
+            g2.DrawLine(Pens.Yellow, 512, 0, 512, 330);
+            g2.DrawLine(Pens.Yellow, 768, 0, 768, 330);
+            g2.DrawLine(Pens.Yellow, 1024, 0, 1024, 330);
             sw.Stop();
             TimeSpan ts = sw.Elapsed;
             this.label1.Text = ts.Milliseconds.ToString();
