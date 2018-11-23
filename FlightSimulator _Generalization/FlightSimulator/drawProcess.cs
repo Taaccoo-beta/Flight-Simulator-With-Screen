@@ -88,17 +88,10 @@ namespace rorationSimulation
 
             
 
-            float interval = 2048f / (float)pnrLength;
+            float interval = 360f / (float)pnrLength;
 
-            if (number > 2718)
-            {
-                number = 2718;
-            }
-            if (number < 702)
-            {
-                number = 702;
-            }
-            int index = (int)((number-702) / interval);
+            
+            int index = (int)((number+180) / interval);
 
             
             positionNumberRecord[index]++;
@@ -255,6 +248,8 @@ namespace rorationSimulation
                         g2.DrawLine(Pens.Yellow, 10 + i + 2, heightHere - 6, 10 + i + 2, heightHere - 4 - (positionNumberRecord[i] / shortNumber));
                         g2.DrawLine(Pens.Yellow, 10 + i + 3, heightHere - 6, 10 + i + 3, heightHere - 4 - (positionNumberRecord[i] / shortNumber));
                         g2.DrawLine(Pens.Yellow, 10 + i + 4, heightHere - 6, 10 + i + 4, heightHere - 4 - (positionNumberRecord[i] / shortNumber));
+                        
+
                     }
                     else if (i == pnrLength-1)
                     {
