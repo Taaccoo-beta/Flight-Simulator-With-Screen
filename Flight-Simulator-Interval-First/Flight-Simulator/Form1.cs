@@ -566,9 +566,9 @@ namespace Flight_Simulator
                 p = new Player();
                 p.Size = new System.Drawing.Size(1038, 400);
                 p.Show();
-               // vf.Location = new Point(10, 10);
+                vf.Location = new Point(10, 10);
                 vf.Location = new Point(3043, 439);
-                //p.Location = new Point(10, 10);
+                p.Location = new Point(10, 10);
                 p.Location = new Point(3043, 439);
                 p.vlcControl1.Size = new System.Drawing.Size(1022, 330);
 
@@ -620,7 +620,7 @@ namespace Flight_Simulator
             p.Size = new System.Drawing.Size(1038, 400);
             p.Show();
 
-            //vf.Location = new Point(3043, 439);
+            //vf.Location = new Point(10, 10);
             //p.Location = new Point(10, 10);
             p.Location = new Point(3043, 439);
             p.vlcControl1.Size = new System.Drawing.Size(1022, 330);

@@ -121,6 +121,7 @@
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.timer3 = new System.Windows.Forms.Timer(this.components);
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
+            this.label2 = new System.Windows.Forms.Label();
             this.tabControl.SuspendLayout();
             this.tpStep1.SuspendLayout();
             this.gbSetInterval.SuspendLayout();
@@ -964,6 +965,7 @@
             // 
             // tpSetp3
             // 
+            this.tpSetp3.Controls.Add(this.label2);
             this.tpSetp3.Controls.Add(this.btnFrameRateSetting);
             this.tpSetp3.Controls.Add(this.tbFrameRate);
             this.tpSetp3.Controls.Add(this.lblShowDescribe);
@@ -982,7 +984,7 @@
             // 
             // btnFrameRateSetting
             // 
-            this.btnFrameRateSetting.Location = new System.Drawing.Point(1359, 563);
+            this.btnFrameRateSetting.Location = new System.Drawing.Point(1372, 563);
             this.btnFrameRateSetting.Name = "btnFrameRateSetting";
             this.btnFrameRateSetting.Size = new System.Drawing.Size(75, 23);
             this.btnFrameRateSetting.TabIndex = 42;
@@ -992,9 +994,9 @@
             // 
             // tbFrameRate
             // 
-            this.tbFrameRate.Location = new System.Drawing.Point(1235, 564);
+            this.tbFrameRate.Location = new System.Drawing.Point(1301, 563);
             this.tbFrameRate.Name = "tbFrameRate";
-            this.tbFrameRate.Size = new System.Drawing.Size(100, 25);
+            this.tbFrameRate.Size = new System.Drawing.Size(52, 25);
             this.tbFrameRate.TabIndex = 41;
             this.tbFrameRate.Text = "10";
             // 
@@ -1110,6 +1112,15 @@
             // timer3
             // 
             this.timer3.Tick += new System.EventHandler(this.timer3_Tick);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(1196, 567);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(87, 15);
+            this.label2.TabIndex = 43;
+            this.label2.Text = "FrameRate:";
             // 
             // Form1
             // 
@@ -1246,6 +1257,7 @@
         private System.Windows.Forms.TextBox tbFirstDuration;
         private System.Windows.Forms.Button btnFrameRateSetting;
         private System.Windows.Forms.TextBox tbFrameRate;
+        private System.Windows.Forms.Label label2;
     }
 }
 
