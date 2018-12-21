@@ -32,6 +32,7 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.tabControl = new System.Windows.Forms.TabControl();
             this.tpStep1 = new System.Windows.Forms.TabPage();
+            this.debugCheck = new System.Windows.Forms.CheckBox();
             this.gbSetInterval = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
             this.tbFirstDuration = new System.Windows.Forms.TextBox();
@@ -105,6 +106,7 @@
             this.btnOpenLoopTest = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.tpSetp3 = new System.Windows.Forms.TabPage();
+            this.label2 = new System.Windows.Forms.Label();
             this.btnFrameRateSetting = new System.Windows.Forms.Button();
             this.tbFrameRate = new System.Windows.Forms.TextBox();
             this.lblShowDescribe = new System.Windows.Forms.Label();
@@ -121,7 +123,6 @@
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.timer3 = new System.Windows.Forms.Timer(this.components);
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
-            this.label2 = new System.Windows.Forms.Label();
             this.tabControl.SuspendLayout();
             this.tpStep1.SuspendLayout();
             this.gbSetInterval.SuspendLayout();
@@ -159,6 +160,7 @@
             // 
             // tpStep1
             // 
+            this.tpStep1.Controls.Add(this.debugCheck);
             this.tpStep1.Controls.Add(this.gbSetInterval);
             this.tpStep1.Controls.Add(this.groupBox2);
             this.tpStep1.Controls.Add(this.groupBox1);
@@ -174,6 +176,18 @@
             this.tpStep1.TabIndex = 0;
             this.tpStep1.Text = "Step-1";
             this.tpStep1.UseVisualStyleBackColor = true;
+            // 
+            // debugCheck
+            // 
+            this.debugCheck.AutoSize = true;
+            this.debugCheck.Location = new System.Drawing.Point(959, 698);
+            this.debugCheck.Name = "debugCheck";
+            this.debugCheck.Size = new System.Drawing.Size(77, 19);
+            this.debugCheck.TabIndex = 31;
+            this.debugCheck.Text = "Normal";
+            this.debugCheck.UseVisualStyleBackColor = true;
+            this.debugCheck.CheckedChanged += new System.EventHandler(this.debugCheck_CheckedChanged);
+            this.debugCheck.Click += new System.EventHandler(this.debugCheck_Click);
             // 
             // gbSetInterval
             // 
@@ -252,6 +266,7 @@
             this.cbCheckCloseLoop.TabIndex = 13;
             this.cbCheckCloseLoop.Text = "Choosed";
             this.cbCheckCloseLoop.UseVisualStyleBackColor = true;
+            this.cbCheckCloseLoop.CheckedChanged += new System.EventHandler(this.cbCheckCloseLoop_CheckedChanged);
             this.cbCheckCloseLoop.Click += new System.EventHandler(this.cbCheckCloseLoop_Click);
             // 
             // groupBox3
@@ -982,6 +997,15 @@
             this.tpSetp3.Text = "Step-3";
             this.tpSetp3.UseVisualStyleBackColor = true;
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(1196, 567);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(87, 15);
+            this.label2.TabIndex = 43;
+            this.label2.Text = "FrameRate:";
+            // 
             // btnFrameRateSetting
             // 
             this.btnFrameRateSetting.Location = new System.Drawing.Point(1372, 563);
@@ -1113,15 +1137,6 @@
             // 
             this.timer3.Tick += new System.EventHandler(this.timer3_Tick);
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(1196, 567);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(87, 15);
-            this.label2.TabIndex = 43;
-            this.label2.Text = "FrameRate:";
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
@@ -1129,11 +1144,12 @@
             this.ClientSize = new System.Drawing.Size(1496, 808);
             this.Controls.Add(this.tabControl);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Flight Simulator";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.tabControl.ResumeLayout(false);
             this.tpStep1.ResumeLayout(false);
+            this.tpStep1.PerformLayout();
             this.gbSetInterval.ResumeLayout(false);
             this.gbSetInterval.PerformLayout();
             this.groupBox5.ResumeLayout(false);
@@ -1258,6 +1274,7 @@
         private System.Windows.Forms.Button btnFrameRateSetting;
         private System.Windows.Forms.TextBox tbFrameRate;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.CheckBox debugCheck;
     }
 }
 

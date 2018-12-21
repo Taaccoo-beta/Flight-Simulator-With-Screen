@@ -566,10 +566,19 @@ namespace Flight_Simulator
                 p = new Player();
                 p.Size = new System.Drawing.Size(1038, 400);
                 p.Show();
-                vf.Location = new Point(10, 10);
-                vf.Location = new Point(3043, 439);
-                p.Location = new Point(10, 10);
-                p.Location = new Point(3043, 439);
+                if (debugCheck.Checked)
+                {
+                    p.Location = new Point(10, 10);
+                    vf.Location = new Point(10, 10);
+                }
+                else
+                {
+                    vf.Location = new Point(3043, 439);
+
+                    p.Location = new Point(3043, 439);
+                }
+                
+               
                 p.vlcControl1.Size = new System.Drawing.Size(1022, 330);
 
                 k = float.Parse(tbKValue.Text);
@@ -922,7 +931,7 @@ namespace Flight_Simulator
             }
             catch
             {
-                k = -11;
+                k = -40;
                 bias = 0;
             }
 
@@ -1023,7 +1032,7 @@ namespace Flight_Simulator
                             lpf3.Clear();
 
 
-                           
+                            expIndex++;
                             if (expIndex == UsedSequenceFileName.Count)
                             {
 
@@ -1072,58 +1081,22 @@ namespace Flight_Simulator
                                 isExpModule = false;
                                 isInterModule = true;
                                 ifStartPlay = true;
+                                
+
+                                expID = expOrder[expIndex];
+                                
+                                
+                                
+                                
+                                intervalTorqueData.Add(expID, new List<float>());
                                 tempExpId = expID;
                                 this.lblShowDescribe.Text = "IntervalFigure";
                             }
 
-
                         }
-                        //if (count == (int)(UsedSequenceTime[expID - 1] * 10))
-                        //{
-                        //    count = 0;
-
-
-                        //    lpf4.Clear();
-                        //    lpf3.Clear();
-
-
-                        //    expIndex++;
-                            
-                        //    if (expIndex < UsedSequenceTime.Count)
-                        //    {
-                               
-                        //        tempExpId = expID;
-                                
-                        //        expID = expOrder[expIndex];
-                        //        lblshowDTemp = sequenceFileName_1[expID - 1];
-                        //        torqueData.Add(expID, new List<float>());
-                                
-
-                        //    }
-                        //    else
-                        //    {
-                        //        ;
-                        //    }
-
-                        //    intervalTorqueData.Add(tempExpId, new List<float>());
-                        //    isExpModule = false;
-                        //    isInterModule = true;
-                        //    ifStartPlayInterval = true;
-                        //    lblShowDescribe.Text = "InterFigure";
-
-
-                        //}
-
-
-                        //this.pictureBox2.CreateGraphics().DrawImage(dp1.drawSignalCurve(lpf3, lpf4), 0, 0);
-
-
-                        //imageNow = dp2.drawCommunitivePoint(degree, false,sequenceIndexForExperiment);
-                        //this.pbCommunitive.CreateGraphics().DrawImage(imageNow, 0, 0);
-
-
-
+                       
                     }
+
                     if (isInterModule & cbCheckVideo.Checked)
                     {
                         this.p.Visible = true;
@@ -1261,7 +1234,7 @@ namespace Flight_Simulator
                         
                         p.Visible = false;
                         vf.Visible = true;
-                        degree += (troque_trans + bias) * k * 0.02f;
+                        degree += (troque_trans + bias) * k * 0.01f;
 
                         lpf3.Add(degree);
                         lpf4.Add(troque_trans);
@@ -1294,7 +1267,7 @@ namespace Flight_Simulator
                         this.pbPosition.CreateGraphics().DrawImage(dp1.drawSignalCurve(lpf3, lpf4), 0, 0);
                         if (ifFirstInterval)
                         {
-                            ifFirstInterval = false;
+                            
                             IntervalDuration = double.Parse(tbFirstDuration.Text);
                         }
                         else
@@ -1310,22 +1283,20 @@ namespace Flight_Simulator
                             lpf4.Clear();
                             lpf3.Clear();
 
-                            expIndex++;
                             
-
                             if (expIndex < UsedSequenceTime.Count)
                             {
 
                                 //tempExpId = expID;
 
                                 //expID = expOrder[expIndex];
-                                //lblshowDTemp = sequenceFileName_1[expID - 1];
-                                //torqueData.Add(expID, new List<float>());
-                                tempExpId = expID;
-                                expID = expOrder[expIndex];
-                                lblshowDTemp = sequenceFileName_1[expID - 1];
-                                intervalTorqueData.Add(expID, new List<float>());
-
+                                //lblshowDTemp = sequenceFileName_1[tempExpId - 1];
+                                //torqueData.Add(expIndex, new List<float>());
+                                //tempExpId = expID;
+                                //expID = expOrder[expIndex];
+                                lblshowDTemp = sequenceFileName_1[tempExpId-1];
+                                //intervalTorqueData.Add(expID, new List<float>());
+                                ifFirstInterval = false;
 
                             }
                             else
@@ -1764,6 +1735,30 @@ namespace Flight_Simulator
         {
             frameRate = int.Parse(this.tbFrameRate.Text);
             
+        }
+
+        private void debugCheck_CheckedChanged(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void cbCheckCloseLoop_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void debugCheck_Click(object sender, EventArgs e)
+        {
+            if (debugCheck.Checked == true)
+            {
+               
+                debugCheck.Text = "DebugMode";
+            }
+            else
+            {
+               
+                debugCheck.Text = "Normal";
+            }
         }
     }
 }
