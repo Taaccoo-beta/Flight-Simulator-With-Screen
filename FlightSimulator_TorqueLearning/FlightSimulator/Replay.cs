@@ -89,7 +89,7 @@ namespace FlightSimulator
 
             ii++;
 
-            this.pictureBox1.CreateGraphics().DrawImage(dp.drawSignalCurve(lpf1, lpf2), 0, 0);
+            this.pictureBox1.CreateGraphics().DrawImage(dp.drawSignalCurve(lpf1, lpf2,true), 0, 0);
         }
 
         private List<int> getRawData(string path)

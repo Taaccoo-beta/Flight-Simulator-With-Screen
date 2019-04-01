@@ -70,9 +70,6 @@
             this.rbDownT = new System.Windows.Forms.RadioButton();
             this.rbUpT = new System.Windows.Forms.RadioButton();
             this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.rbPCShake = new System.Windows.Forms.RadioButton();
-            this.rbPCHeat = new System.Windows.Forms.RadioButton();
             this.gbSetName = new System.Windows.Forms.GroupBox();
             this.lblRecordFileName = new System.Windows.Forms.Label();
             this.lblRecordFileLabel = new System.Windows.Forms.Label();
@@ -141,6 +138,15 @@
             this.timerForBackToZero = new System.Windows.Forms.Timer(this.components);
             this.timer3 = new System.Windows.Forms.Timer(this.components);
             this.timer2 = new System.Windows.Forms.Timer(this.components);
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.cbStartGradMean = new System.Windows.Forms.CheckBox();
+            this.btnOLByHand = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.timerForHandOL = new System.Windows.Forms.Timer(this.components);
+            this.gbOLHand = new System.Windows.Forms.GroupBox();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.tabControl.SuspendLayout();
             this.tpStep1.SuspendLayout();
@@ -160,6 +166,8 @@
             this.flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            this.groupBox2.SuspendLayout();
+            this.gbOLHand.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -242,10 +250,12 @@
             // 
             // tabControl
             // 
+            this.tabControl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControl.Controls.Add(this.tpStep1);
             this.tabControl.Controls.Add(this.tpStep2);
             this.tabControl.Controls.Add(this.tpSetp3);
-            this.tabControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl.Location = new System.Drawing.Point(0, 28);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
@@ -255,6 +265,8 @@
             // 
             // tpStep1
             // 
+            this.tpStep1.AutoScroll = true;
+            this.tpStep1.Controls.Add(this.groupBox2);
             this.tpStep1.Controls.Add(this.btnGoStep_2);
             this.tpStep1.Controls.Add(this.gbSetSequence_3);
             this.tpStep1.Controls.Add(this.gbSetSequence_2);
@@ -274,7 +286,10 @@
             // 
             // btnGoStep_2
             // 
-            this.btnGoStep_2.Location = new System.Drawing.Point(980, 593);
+            this.btnGoStep_2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnGoStep_2.Location = new System.Drawing.Point(1056, 716);
             this.btnGoStep_2.Name = "btnGoStep_2";
             this.btnGoStep_2.Size = new System.Drawing.Size(111, 39);
             this.btnGoStep_2.TabIndex = 28;
@@ -284,6 +299,7 @@
             // 
             // gbSetSequence_3
             // 
+            this.gbSetSequence_3.AutoSize = true;
             this.gbSetSequence_3.Controls.Add(this.btnSeOrMi_3);
             this.gbSetSequence_3.Controls.Add(this.cbSetSeqChoosed_3);
             this.gbSetSequence_3.Controls.Add(this.btnSetSequenceSave_3);
@@ -295,9 +311,9 @@
             this.gbSetSequence_3.Controls.Add(this.lblTrainOrTest_3);
             this.gbSetSequence_3.Controls.Add(this.rbTrain_3);
             this.gbSetSequence_3.Controls.Add(this.lblLastTime_3);
-            this.gbSetSequence_3.Location = new System.Drawing.Point(783, 77);
+            this.gbSetSequence_3.Location = new System.Drawing.Point(859, 140);
             this.gbSetSequence_3.Name = "gbSetSequence_3";
-            this.gbSetSequence_3.Size = new System.Drawing.Size(308, 312);
+            this.gbSetSequence_3.Size = new System.Drawing.Size(308, 328);
             this.gbSetSequence_3.TabIndex = 23;
             this.gbSetSequence_3.TabStop = false;
             this.gbSetSequence_3.Text = "Set-Sequence";
@@ -416,6 +432,7 @@
             // 
             // gbSetSequence_2
             // 
+            this.gbSetSequence_2.AutoSize = true;
             this.gbSetSequence_2.Controls.Add(this.btnSeOrMi_2);
             this.gbSetSequence_2.Controls.Add(this.cbSetSeqChoosed_2);
             this.gbSetSequence_2.Controls.Add(this.btnSetSequenceSave_2);
@@ -427,9 +444,9 @@
             this.gbSetSequence_2.Controls.Add(this.lblTrainOrTest_2);
             this.gbSetSequence_2.Controls.Add(this.rbTrain_2);
             this.gbSetSequence_2.Controls.Add(this.lblLastTime_2);
-            this.gbSetSequence_2.Location = new System.Drawing.Point(435, 77);
+            this.gbSetSequence_2.Location = new System.Drawing.Point(511, 140);
             this.gbSetSequence_2.Name = "gbSetSequence_2";
-            this.gbSetSequence_2.Size = new System.Drawing.Size(295, 312);
+            this.gbSetSequence_2.Size = new System.Drawing.Size(295, 328);
             this.gbSetSequence_2.TabIndex = 27;
             this.gbSetSequence_2.TabStop = false;
             this.gbSetSequence_2.Text = "Set-Sequence";
@@ -455,6 +472,7 @@
             this.cbSetSeqChoosed_2.TabIndex = 12;
             this.cbSetSeqChoosed_2.Text = "Choosed";
             this.cbSetSeqChoosed_2.UseVisualStyleBackColor = true;
+            this.cbSetSeqChoosed_2.CheckedChanged += new System.EventHandler(this.cbSetSeqChoosed_2_CheckedChanged);
             this.cbSetSeqChoosed_2.Click += new System.EventHandler(this.cbSetSeqChoosed_2_Click);
             // 
             // btnSetSequenceSave_2
@@ -549,13 +567,11 @@
             // 
             // gbPunishmentChoose
             // 
+            this.gbPunishmentChoose.AutoSize = true;
             this.gbPunishmentChoose.Controls.Add(this.panel1);
-            this.gbPunishmentChoose.Controls.Add(this.label6);
-            this.gbPunishmentChoose.Controls.Add(this.rbPCShake);
-            this.gbPunishmentChoose.Controls.Add(this.rbPCHeat);
-            this.gbPunishmentChoose.Location = new System.Drawing.Point(755, 428);
+            this.gbPunishmentChoose.Location = new System.Drawing.Point(859, 497);
             this.gbPunishmentChoose.Name = "gbPunishmentChoose";
-            this.gbPunishmentChoose.Size = new System.Drawing.Size(336, 130);
+            this.gbPunishmentChoose.Size = new System.Drawing.Size(308, 130);
             this.gbPunishmentChoose.TabIndex = 26;
             this.gbPunishmentChoose.TabStop = false;
             this.gbPunishmentChoose.Text = "ExInit-setPunishment";
@@ -565,32 +581,32 @@
             this.panel1.Controls.Add(this.rbDownT);
             this.panel1.Controls.Add(this.rbUpT);
             this.panel1.Controls.Add(this.label5);
-            this.panel1.Location = new System.Drawing.Point(5, 62);
+            this.panel1.Location = new System.Drawing.Point(11, 46);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(325, 51);
+            this.panel1.Size = new System.Drawing.Size(291, 51);
             this.panel1.TabIndex = 29;
             // 
             // rbDownT
             // 
             this.rbDownT.AutoSize = true;
-            this.rbDownT.Location = new System.Drawing.Point(191, 13);
+            this.rbDownT.Location = new System.Drawing.Point(196, 15);
             this.rbDownT.Name = "rbDownT";
-            this.rbDownT.Size = new System.Drawing.Size(68, 19);
+            this.rbDownT.Size = new System.Drawing.Size(92, 19);
             this.rbDownT.TabIndex = 16;
             this.rbDownT.TabStop = true;
-            this.rbDownT.Text = "DownT";
+            this.rbDownT.Text = "DownSide";
             this.rbDownT.UseVisualStyleBackColor = true;
             // 
             // rbUpT
             // 
             this.rbUpT.AutoSize = true;
             this.rbUpT.Checked = true;
-            this.rbUpT.Location = new System.Drawing.Point(123, 13);
+            this.rbUpT.Location = new System.Drawing.Point(110, 15);
             this.rbUpT.Name = "rbUpT";
-            this.rbUpT.Size = new System.Drawing.Size(52, 19);
+            this.rbUpT.Size = new System.Drawing.Size(76, 19);
             this.rbUpT.TabIndex = 15;
             this.rbUpT.TabStop = true;
-            this.rbUpT.Text = "UpT";
+            this.rbUpT.Text = "UpSide";
             this.rbUpT.UseVisualStyleBackColor = true;
             this.rbUpT.CheckedChanged += new System.EventHandler(this.rbUpT_CheckedChanged);
             // 
@@ -598,53 +614,22 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label5.Location = new System.Drawing.Point(4, 15);
+            this.label5.Location = new System.Drawing.Point(3, 17);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(110, 15);
+            this.label5.Size = new System.Drawing.Size(102, 15);
             this.label5.TabIndex = 17;
-            this.label5.Text = "Orientation：";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label6.Location = new System.Drawing.Point(19, 36);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(102, 15);
-            this.label6.TabIndex = 18;
-            this.label6.Text = "Punishment：";
-            // 
-            // rbPCShake
-            // 
-            this.rbPCShake.AutoSize = true;
-            this.rbPCShake.Location = new System.Drawing.Point(197, 36);
-            this.rbPCShake.Name = "rbPCShake";
-            this.rbPCShake.Size = new System.Drawing.Size(68, 19);
-            this.rbPCShake.TabIndex = 8;
-            this.rbPCShake.Text = "Shake";
-            this.rbPCShake.UseVisualStyleBackColor = true;
-            // 
-            // rbPCHeat
-            // 
-            this.rbPCHeat.AutoSize = true;
-            this.rbPCHeat.Checked = true;
-            this.rbPCHeat.Location = new System.Drawing.Point(129, 36);
-            this.rbPCHeat.Name = "rbPCHeat";
-            this.rbPCHeat.Size = new System.Drawing.Size(60, 19);
-            this.rbPCHeat.TabIndex = 7;
-            this.rbPCHeat.TabStop = true;
-            this.rbPCHeat.Text = "Heat";
-            this.rbPCHeat.UseVisualStyleBackColor = true;
+            this.label5.Text = "Punishment：";
             // 
             // gbSetName
             // 
+            this.gbSetName.AutoSize = true;
             this.gbSetName.Controls.Add(this.lblRecordFileName);
             this.gbSetName.Controls.Add(this.lblRecordFileLabel);
             this.gbSetName.Controls.Add(this.tbExperimentName);
             this.gbSetName.Controls.Add(this.lblExName);
-            this.gbSetName.Location = new System.Drawing.Point(392, 428);
+            this.gbSetName.Location = new System.Drawing.Point(511, 497);
             this.gbSetName.Name = "gbSetName";
-            this.gbSetName.Size = new System.Drawing.Size(280, 130);
+            this.gbSetName.Size = new System.Drawing.Size(295, 130);
             this.gbSetName.TabIndex = 24;
             this.gbSetName.TabStop = false;
             this.gbSetName.Text = "ExInit-SetName";
@@ -687,11 +672,14 @@
             // 
             // gbSetDataPath
             // 
+            this.gbSetDataPath.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.gbSetDataPath.Controls.Add(this.btnChooseDataPath);
             this.gbSetDataPath.Controls.Add(this.lblDPValue);
-            this.gbSetDataPath.Location = new System.Drawing.Point(91, 428);
+            this.gbSetDataPath.Location = new System.Drawing.Point(167, 497);
             this.gbSetDataPath.Name = "gbSetDataPath";
-            this.gbSetDataPath.Size = new System.Drawing.Size(220, 130);
+            this.gbSetDataPath.Size = new System.Drawing.Size(297, 130);
             this.gbSetDataPath.TabIndex = 23;
             this.gbSetDataPath.TabStop = false;
             this.gbSetDataPath.Text = "ExInit-SetPath";
@@ -730,9 +718,9 @@
             this.gbSetSequence_1.Controls.Add(this.lblTrainOrTest_1);
             this.gbSetSequence_1.Controls.Add(this.rbTrain_1);
             this.gbSetSequence_1.Controls.Add(this.lblLastTime_1);
-            this.gbSetSequence_1.Location = new System.Drawing.Point(91, 77);
+            this.gbSetSequence_1.Location = new System.Drawing.Point(167, 140);
             this.gbSetSequence_1.Name = "gbSetSequence_1";
-            this.gbSetSequence_1.Size = new System.Drawing.Size(297, 312);
+            this.gbSetSequence_1.Size = new System.Drawing.Size(297, 328);
             this.gbSetSequence_1.TabIndex = 22;
             this.gbSetSequence_1.TabStop = false;
             this.gbSetSequence_1.Text = "Set-Sequence";
@@ -759,6 +747,7 @@
             this.cbSetSeqChoosed_1.TabIndex = 11;
             this.cbSetSeqChoosed_1.Text = "Choosed";
             this.cbSetSeqChoosed_1.UseVisualStyleBackColor = true;
+            this.cbSetSeqChoosed_1.CheckedChanged += new System.EventHandler(this.cbSetSeqChoosed_1_CheckedChanged);
             this.cbSetSeqChoosed_1.Click += new System.EventHandler(this.cbSetSeqChoosed_1_Click);
             // 
             // btnSetSequenceSave_1
@@ -853,6 +842,9 @@
             // 
             // tpStep2
             // 
+            this.tpStep2.Controls.Add(this.gbOLHand);
+            this.tpStep2.Controls.Add(this.button3);
+            this.tpStep2.Controls.Add(this.btnOLByHand);
             this.tpStep2.Controls.Add(this.lblTroqueTransValue);
             this.tpStep2.Controls.Add(this.lblTroqueTrans);
             this.tpStep2.Controls.Add(this.lblTorqueValue);
@@ -885,7 +877,7 @@
             // lblTroqueTransValue
             // 
             this.lblTroqueTransValue.AutoSize = true;
-            this.lblTroqueTransValue.Location = new System.Drawing.Point(187, 792);
+            this.lblTroqueTransValue.Location = new System.Drawing.Point(105, 782);
             this.lblTroqueTransValue.Name = "lblTroqueTransValue";
             this.lblTroqueTransValue.Size = new System.Drawing.Size(39, 15);
             this.lblTroqueTransValue.TabIndex = 56;
@@ -894,7 +886,7 @@
             // lblTroqueTrans
             // 
             this.lblTroqueTrans.AutoSize = true;
-            this.lblTroqueTrans.Location = new System.Drawing.Point(121, 792);
+            this.lblTroqueTrans.Location = new System.Drawing.Point(39, 782);
             this.lblTroqueTrans.Name = "lblTroqueTrans";
             this.lblTroqueTrans.Size = new System.Drawing.Size(63, 15);
             this.lblTroqueTrans.TabIndex = 55;
@@ -903,7 +895,7 @@
             // lblTorqueValue
             // 
             this.lblTorqueValue.AutoSize = true;
-            this.lblTorqueValue.Location = new System.Drawing.Point(187, 768);
+            this.lblTorqueValue.Location = new System.Drawing.Point(105, 758);
             this.lblTorqueValue.Name = "lblTorqueValue";
             this.lblTorqueValue.Size = new System.Drawing.Size(39, 15);
             this.lblTorqueValue.TabIndex = 54;
@@ -912,7 +904,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(121, 768);
+            this.label3.Location = new System.Drawing.Point(39, 758);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(63, 15);
             this.label3.TabIndex = 53;
@@ -921,7 +913,7 @@
             // lblPositionValue
             // 
             this.lblPositionValue.AutoSize = true;
-            this.lblPositionValue.Location = new System.Drawing.Point(187, 738);
+            this.lblPositionValue.Location = new System.Drawing.Point(105, 728);
             this.lblPositionValue.Name = "lblPositionValue";
             this.lblPositionValue.Size = new System.Drawing.Size(39, 15);
             this.lblPositionValue.TabIndex = 52;
@@ -930,7 +922,7 @@
             // lblPosition
             // 
             this.lblPosition.AutoSize = true;
-            this.lblPosition.Location = new System.Drawing.Point(117, 738);
+            this.lblPosition.Location = new System.Drawing.Point(23, 728);
             this.lblPosition.Name = "lblPosition";
             this.lblPosition.Size = new System.Drawing.Size(79, 15);
             this.lblPosition.TabIndex = 51;
@@ -938,7 +930,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(751, 786);
+            this.button2.Location = new System.Drawing.Point(564, 776);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(108, 23);
             this.button2.TabIndex = 50;
@@ -948,7 +940,7 @@
             // 
             // btnClosedTest
             // 
-            this.btnClosedTest.Location = new System.Drawing.Point(751, 747);
+            this.btnClosedTest.Location = new System.Drawing.Point(564, 737);
             this.btnClosedTest.Name = "btnClosedTest";
             this.btnClosedTest.Size = new System.Drawing.Size(108, 23);
             this.btnClosedTest.TabIndex = 49;
@@ -958,7 +950,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(883, 785);
+            this.button1.Location = new System.Drawing.Point(690, 776);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(108, 23);
             this.button1.TabIndex = 48;
@@ -968,7 +960,7 @@
             // 
             // btnCalibration
             // 
-            this.btnCalibration.Location = new System.Drawing.Point(1019, 747);
+            this.btnCalibration.Location = new System.Drawing.Point(1147, 738);
             this.btnCalibration.Name = "btnCalibration";
             this.btnCalibration.Size = new System.Drawing.Size(108, 23);
             this.btnCalibration.TabIndex = 47;
@@ -985,7 +977,7 @@
             this.gbSetPar.Controls.Add(this.tbKValue);
             this.gbSetPar.Controls.Add(this.lblKLabel);
             this.gbSetPar.Enabled = false;
-            this.gbSetPar.Location = new System.Drawing.Point(305, 738);
+            this.gbSetPar.Location = new System.Drawing.Point(202, 728);
             this.gbSetPar.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.gbSetPar.Name = "gbSetPar";
             this.gbSetPar.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
@@ -1052,7 +1044,7 @@
             // 
             // btnStopRotating
             // 
-            this.btnStopRotating.Location = new System.Drawing.Point(1019, 785);
+            this.btnStopRotating.Location = new System.Drawing.Point(1147, 776);
             this.btnStopRotating.Name = "btnStopRotating";
             this.btnStopRotating.Size = new System.Drawing.Size(108, 23);
             this.btnStopRotating.TabIndex = 43;
@@ -1062,7 +1054,7 @@
             // 
             // btnGoStep_3
             // 
-            this.btnGoStep_3.Location = new System.Drawing.Point(1179, 747);
+            this.btnGoStep_3.Location = new System.Drawing.Point(1283, 738);
             this.btnGoStep_3.Name = "btnGoStep_3";
             this.btnGoStep_3.Size = new System.Drawing.Size(103, 62);
             this.btnGoStep_3.TabIndex = 42;
@@ -1073,14 +1065,14 @@
             // lblOpenClosed
             // 
             this.lblOpenClosed.AutoSize = true;
-            this.lblOpenClosed.Location = new System.Drawing.Point(547, 747);
+            this.lblOpenClosed.Location = new System.Drawing.Point(465, 737);
             this.lblOpenClosed.Name = "lblOpenClosed";
             this.lblOpenClosed.Size = new System.Drawing.Size(0, 15);
             this.lblOpenClosed.TabIndex = 41;
             // 
             // btnOpenLoopTest
             // 
-            this.btnOpenLoopTest.Location = new System.Drawing.Point(883, 747);
+            this.btnOpenLoopTest.Location = new System.Drawing.Point(690, 738);
             this.btnOpenLoopTest.Name = "btnOpenLoopTest";
             this.btnOpenLoopTest.Size = new System.Drawing.Size(108, 23);
             this.btnOpenLoopTest.TabIndex = 36;
@@ -1147,7 +1139,6 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Top;
             this.pictureBox1.Location = new System.Drawing.Point(3, 3);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(1405, 678);
@@ -1341,6 +1332,100 @@
             // 
             this.timer2.Tick += new System.EventHandler(this.timer2_Tick_1);
             // 
+            // groupBox2
+            // 
+            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox2.Controls.Add(this.cbStartGradMean);
+            this.groupBox2.Location = new System.Drawing.Point(167, 655);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(297, 100);
+            this.groupBox2.TabIndex = 29;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "ExInit-GradMean";
+            // 
+            // cbStartGradMean
+            // 
+            this.cbStartGradMean.AutoSize = true;
+            this.cbStartGradMean.Checked = true;
+            this.cbStartGradMean.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbStartGradMean.Location = new System.Drawing.Point(39, 45);
+            this.cbStartGradMean.Name = "cbStartGradMean";
+            this.cbStartGradMean.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.cbStartGradMean.Size = new System.Drawing.Size(85, 19);
+            this.cbStartGradMean.TabIndex = 12;
+            this.cbStartGradMean.Text = "Choosed";
+            this.cbStartGradMean.UseVisualStyleBackColor = true;
+            this.cbStartGradMean.CheckedChanged += new System.EventHandler(this.cbStartGradMean_CheckedChanged);
+            // 
+            // btnOLByHand
+            // 
+            this.btnOLByHand.Location = new System.Drawing.Point(813, 738);
+            this.btnOLByHand.Name = "btnOLByHand";
+            this.btnOLByHand.Size = new System.Drawing.Size(108, 23);
+            this.btnOLByHand.TabIndex = 57;
+            this.btnOLByHand.Text = "OLHand";
+            this.btnOLByHand.UseVisualStyleBackColor = true;
+            this.btnOLByHand.Click += new System.EventHandler(this.btnOLByHand_Click);
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(813, 776);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(108, 23);
+            this.button3.TabIndex = 58;
+            this.button3.Text = "Stop";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // timerForHandOL
+            // 
+            this.timerForHandOL.Tick += new System.EventHandler(this.timerForHandOL_Tick);
+            // 
+            // gbOLHand
+            // 
+            this.gbOLHand.Controls.Add(this.button4);
+            this.gbOLHand.Controls.Add(this.button5);
+            this.gbOLHand.Controls.Add(this.label4);
+            this.gbOLHand.Enabled = false;
+            this.gbOLHand.Location = new System.Drawing.Point(949, 728);
+            this.gbOLHand.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.gbOLHand.Name = "gbOLHand";
+            this.gbOLHand.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.gbOLHand.Size = new System.Drawing.Size(166, 80);
+            this.gbOLHand.TabIndex = 45;
+            this.gbOLHand.TabStop = false;
+            this.gbOLHand.Text = "Setting";
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(92, 42);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(61, 23);
+            this.button4.TabIndex = 37;
+            this.button4.Text = "Down";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(7, 41);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(64, 23);
+            this.button5.TabIndex = 36;
+            this.button5.Text = "Up";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(89, 18);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(0, 15);
+            this.label4.TabIndex = 10;
+            // 
             // FlightSimulator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
@@ -1356,12 +1441,12 @@
             this.menuStrip1.PerformLayout();
             this.tabControl.ResumeLayout(false);
             this.tpStep1.ResumeLayout(false);
+            this.tpStep1.PerformLayout();
             this.gbSetSequence_3.ResumeLayout(false);
             this.gbSetSequence_3.PerformLayout();
             this.gbSetSequence_2.ResumeLayout(false);
             this.gbSetSequence_2.PerformLayout();
             this.gbPunishmentChoose.ResumeLayout(false);
-            this.gbPunishmentChoose.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.gbSetName.ResumeLayout(false);
@@ -1383,6 +1468,10 @@
             this.flowLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
+            this.gbOLHand.ResumeLayout(false);
+            this.gbOLHand.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1399,8 +1488,6 @@
         private System.Windows.Forms.TabPage tpStep2;
         private System.Windows.Forms.TabPage tpSetp3;
         private System.Windows.Forms.GroupBox gbPunishmentChoose;
-        private System.Windows.Forms.RadioButton rbPCShake;
-        private System.Windows.Forms.RadioButton rbPCHeat;
         private System.Windows.Forms.GroupBox gbSetName;
         private System.Windows.Forms.TextBox tbExperimentName;
         private System.Windows.Forms.Label lblExName;
@@ -1434,7 +1521,6 @@
         private System.Windows.Forms.Label lblTrainOrTest_2;
         private System.Windows.Forms.RadioButton rbTrain_2;
         private System.Windows.Forms.Label lblLastTime_2;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.RadioButton rbDownT;
         private System.Windows.Forms.RadioButton rbUpT;
@@ -1502,6 +1588,15 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label lblPositionValue;
         private System.Windows.Forms.Label lblPosition;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.CheckBox cbStartGradMean;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btnOLByHand;
+        private System.Windows.Forms.Timer timerForHandOL;
+        private System.Windows.Forms.GroupBox gbOLHand;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Label label4;
     }
 }
 
